@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Lf-expressgen": {
+    "mflix-visualizer": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Lf-expressgen",
+            "outputPath": "dist/mflix-visualizer",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Lf-expressgen:build"
+            "browserTarget": "mflix-visualizer:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Lf-expressgen:build:production"
+              "browserTarget": "mflix-visualizer:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Lf-expressgen:build"
+            "browserTarget": "mflix-visualizer:build"
           }
         },
         "test": {
@@ -111,15 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Lf-expressgen:serve"
+            "devServerTarget": "mflix-visualizer:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Lf-expressgen:serve:production"
+              "devServerTarget": "mflix-visualizer:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "Lf-expressgen"
+  "defaultProject": "mflix-visualizer"
 }
