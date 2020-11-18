@@ -40,6 +40,48 @@ router.get('/tenmovies', function(req, res, next){
   }
 })
 
+router.get('/horror', function(req, res, next){
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  client.connect(getHorrorMovies);
+
+  function getHorrorMovies(err){
+    if(err) Console.log("Connessione al db non riuscita");
+    else {
+      const collection = client.db("sample_mflix").collection("movies");
+      collection.find({genres:{$in:["Horror"]}}).limit(10).toArray(callBackQuery);
+      //Limitare a 10!!! altrimenti cerca tutti i film horror e continuerebbe a caricarsi all'infinito
+    }
+  }
+
+  function callBackQuery (err, result) {
+    if (err) console.log(err.message);
+    else res.send(result);
+    client.close();
+  }
+})
+
+router.get('/comedy', function(req, res, next){
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  client.connect(getComedyMovies);
+
+  function getComedyMovies(err){
+    if(err) Console.log("Connessione al db non riuscita");
+    else {
+      const collection = client.db("sample_mflix").collection("movies");
+      collection.find({genres:{$in:["Comedy"]}}).limit(10).toArray(callBackQuery);
+      //Limitare a 10!!! altrimenti cerca tutti i film horror e continuerebbe a caricarsi all'infinito
+    }
+  }
+
+  function callBackQuery (err, result) {
+    if (err) console.log(err.message);
+    else res.send(result);
+    client.close();
+  }
+})
+
+
+
 
 
 module.exports = router;

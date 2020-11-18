@@ -21,6 +21,18 @@ export class AppComponent {
     this.obs.subscribe(this.getData);
   }
 
+  loadHorrorMovies()
+  {
+    this.obs = this.http.get("https://3000-f2461e02-fe1e-4154-8e37-e6935043e6e7.ws-eu01.gitpod.io/movies/horror");
+    this.obs.subscribe(this.getData);
+  }
+
+  loadComedyMovies()
+  {
+    this.obs = this.http.get("https://3000-f2461e02-fe1e-4154-8e37-e6935043e6e7.ws-eu01.gitpod.io/movies/comedy");
+    this.obs.subscribe(this.getData);
+  }
+
   photoURL(urltoSanitize) {
     console.log(urltoSanitize);
     return this.sanitizer.bypassSecurityTrustUrl(urltoSanitize);

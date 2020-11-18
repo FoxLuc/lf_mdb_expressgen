@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
-  <button class="btn btn-primary" (click)="load10Movies()">Carica 10 film</button>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">Film</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <div class="card-columns">
-    <div *ngFor="let movie of results" class="card">
-      <img class="card-img-top" [src]="photoURL(movie.poster)" alt="Movie poster">
-      <div class="card-body text-center">
-        <h4 class="card-title">{{movie.title}}</h4>
-        <p class="card-text">{{movie.fullplot}}</p>
-      </div>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#" (click)="load10Movies()">Carica 10
+						Film<span class="sr-only"></span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#" (click)="loadHorrorMovies()">Film
+						Horror<span class="sr-only"></span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#" (click)="loadComedyMovies()">Film
+						Comici<span class="sr-only"></span></a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="card-columns">
+		<div *ngFor="let movie of results" class="card">
+        <hr>
+			<div *ngIf="movie.poster; else elseBlock1"> <img class="card-img-top" alt="Movie Poster" [src]="photoURL(movie.poster)"> </div>
+            <ng-template #elseBlock1>
+                <span class="alert alert-info" role="alert"><strong>Info!</strong> Immagine mancante</span>
+            </ng-template>
+            <div class="card-body text-center">
+                <h4 class="card-title">{{movie.title}}</h4>
+                <p class="card-text">{{movie.fullplot}}</p>
+            </div>
+        </div>
     </div>
-  </div>
 </body>
+
 </html>
-
-
